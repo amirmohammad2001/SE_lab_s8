@@ -2,13 +2,14 @@ package org.example.graphTravelers;
 
 
 import edu.uci.ics.jung.graph.SparseMultigraph;
+import org.example.adapter.JungGraphAdapter;
 
 import java.util.*;
 
 public class BfsGraphTraverser implements Traverser {
-    private final SparseMultigraph<Integer, String> graph;
+    private final JungGraphAdapter graph;
 
-    public BfsGraphTraverser(SparseMultigraph<Integer, String> graph) {
+    public BfsGraphTraverser(JungGraphAdapter graph) {
         this.graph = graph;
     }
 
