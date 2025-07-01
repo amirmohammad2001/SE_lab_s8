@@ -23,7 +23,6 @@ public class JungGraphAdapter implements GraphAdapter {
             return new ArrayList<>(graph.getNeighbors(v));
         }
 
-        // اگر نیاز دارید، متد getRawGraph برای دسترسی مستقیم به گراف
         public SparseMultigraph<Integer, String> getRawGraph() {
             return graph;
         }
