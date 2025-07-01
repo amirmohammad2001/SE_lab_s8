@@ -23,23 +23,27 @@ public interface GraphAdapter {
 ```java
 import edu.uci.ics.jung.graph.SparseMultigraph;
 
-public class JungGraphAdapter implements GraphAdapter {
-    private final SparseMultigraph<Integer, String> graph = new SparseMultigraph<>();
+import java.util.ArrayList;
+import java.util.List;
 
-    @Override
-    public void addVertex(Integer v) {
-        graph.addVertex(v);
-    }
+public class Adapter implements GraphAdapter {
+        private final SparseMultigraph<Integer, String> graph = new SparseMultigraph<>();
 
-    @Override
-    public void addEdge(String e, Integer v1, Integer v2) {
-        graph.addEdge(e, v1, v2);
-    }
+        @Override
+        public void addVertex(Integer v) {
+            graph.addVertex(v);
+        }
 
-    @Override
-    public List<Integer> getNeighbors(Integer v) {
-        return new ArrayList<>(graph.getNeighbors(v));
-    }
+        @Override
+        public void addEdge(String e, Integer v1, Integer v2) {
+            graph.addEdge(e, v1, v2);
+        }
+
+        @Override
+        public List<Integer> getNeighbors(Integer v) {
+            return new ArrayList<>(graph.getNeighbors(v));
+        }
+
 }
 ```
 
@@ -51,9 +55,9 @@ public class JungGraphAdapter implements GraphAdapter {
 
 ```java
 public class BfsGraphTraverser implements Traverser {
-    private final GraphAdapter graph;
+    private final Adapter graph;
 
-    public BfsGraphTraverser(GraphAdapter graph) {
+    public BfsGraphTraverser(Adapter graph) {
         this.graph = graph;
     }
 
@@ -94,7 +98,7 @@ public class BfsGraphTraverser implements Traverser {
 ```java
 public class Main {
     public static void main(String[] args) {
-        GraphAdapter graph = new JungGraphAdapter();
+        Adapter graph = new Adapter();
         ...
         }
     }
