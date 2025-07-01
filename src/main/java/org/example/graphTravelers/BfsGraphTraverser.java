@@ -1,14 +1,14 @@
 package org.example.graphTravelers;
 
 
-import org.example.adapter.JungGraphAdapter;
+import org.example.adapter.Adapter;
 
 import java.util.*;
 
 public class BfsGraphTraverser implements Traverser {
-    private final JungGraphAdapter graph;
+    private final Adapter graph;
 
-    public BfsGraphTraverser(JungGraphAdapter graph) {
+    public BfsGraphTraverser(Adapter graph) {
         this.graph = graph;
     }
 
@@ -25,9 +25,8 @@ public class BfsGraphTraverser implements Traverser {
             Integer vertex = queue.poll();
             result.add(vertex);
 
-            // Get neighbors and sort them for deterministic output
             List<Integer> neighbors = new ArrayList<>(graph.getNeighbors(vertex));
-            neighbors.sort(Comparator.naturalOrder());
+            neighbors.sort(Integer::compareTo);
 
             for (Integer neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {

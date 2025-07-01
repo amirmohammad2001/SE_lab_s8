@@ -5,7 +5,7 @@ import edu.uci.ics.jung.graph.SparseMultigraph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JungGraphAdapter implements GraphAdapter {
+public class Adapter implements GraphAdapter {
         private final SparseMultigraph<Integer, String> graph = new SparseMultigraph<>();
 
         @Override

@@ -1,20 +1,16 @@
 package org.example;
 
-import edu.uci.ics.jung.graph.SparseMultigraph;
-import org.example.adapter.JungGraphAdapter;
+import org.example.adapter.Adapter;
 import org.example.graphTravelers.BfsGraphTraverser;
 import org.example.graphTravelers.DfsGraphTraverser;
 import org.example.graphTravelers.Traverser;
 
-import java.util.ArrayList;
 import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         // Create a graph
-        JungGraphAdapter graph = new JungGraphAdapter();
+        Adapter graph = new Adapter();
 
         // Add vertices (using Integer nodes)
         graph.addVertex(1);

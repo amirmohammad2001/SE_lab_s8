@@ -1,13 +1,13 @@
 package org.example.graphTravelers;
 
-import org.example.adapter.JungGraphAdapter;
+import org.example.adapter.Adapter;
 
 import java.util.*;
 
 public class DfsGraphTraverser implements Traverser {
-    private final JungGraphAdapter graph;
+    private final Adapter graph;
 
-    public DfsGraphTraverser(JungGraphAdapter graph) {
+    public DfsGraphTraverser(Adapter graph) {
         this.graph = graph;
     }
 
@@ -25,9 +25,8 @@ public class DfsGraphTraverser implements Traverser {
                 visited.add(vertex);
                 result.add(vertex);
 
-                // Get neighbors and sort them for deterministic output
                 List<Integer> neighbors = new ArrayList<>(graph.getNeighbors(vertex));
-                neighbors.sort(Integer::compareTo); // ترتیب صعودی همسایگان
+                neighbors.sort(Integer::compareTo);
 
                 for (Integer neighbor : neighbors) {
                     if (!visited.contains(neighbor)) {
