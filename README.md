@@ -114,7 +114,56 @@ public class Main {
 
 ---
 
+# second
+---
+همانطور که گفته شده، در این بخش صرفا به تغییر فایل adapter میپردازیم و انتظار داریم که کد به درستی کار کند و خروجی مشابه بخش قبلی دهد.
 
+---
+## پیاده سازی Adapter برای JGraphT
 
+```java
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleGraph;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+public class Adapter implements GraphAdapter {
+    private final SimpleGraph<Integer, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+
+    @Override
+    public void addVertex(Integer v) {
+        graph.addVertex(v);
+    }
+
+    @Override
+    public void addEdge(String e, Integer v1, Integer v2) {
+        graph.addEdge(v1, v2);
+    }
+
+    @Override
+    public List<Integer> getNeighbors(Integer v) {
+        Set<DefaultEdge> edges = graph.edgesOf(v);
+        List<Integer> neighbors = new ArrayList<>();
+        for (DefaultEdge edge : edges) {
+            Integer source = graph.getEdgeSource(edge);
+            Integer target = graph.getEdgeTarget(edge);
+            if (source.equals(v)) {
+                neighbors.add(target);
+            } else {
+                neighbors.add(source);
+            }
+        }
+        return neighbors;
+    }
+
+```
+
+---
+
+همانطور که در تصویر زیر مشاهده میکنید، خروجی کد main برای هر دو Adapter مشابه است:
+
+![Sample output](i1.png)
+
+---
